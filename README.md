@@ -3,6 +3,7 @@
 The objective of this project is to implement an application scenario which illustrates the use of the following techniques:
 * [Docker](https://www.docker.com/): it can be used to deploy a cluster of (virtual) machines on your laptop, but can also be used in a distributed setting with several laptops.
 * [Spark](https://spark.apache.org/): a spark infrastructure, including hdfs, a master and several slaves must be deployed in the docker infrastructure.
+
 It refers to the courses of Deep Learning of the MSc track *Cloud Computing and Big Data* given at [Toulouse INP-E.N.S.E.E.I.H.T.](http://www.enseeiht.fr/en/index.html) Eng. School and [Paul Sabatier Faculty](http://www.univ-tlse3.fr/home-page-en-379161.kjsp) of Science and Engineering.
 
 ## Getting Started

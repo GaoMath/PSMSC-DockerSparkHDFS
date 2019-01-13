@@ -15,25 +15,25 @@ FILE="file-wordcount.txt"
 FTIME="/tmp/time-wordcount.log"
 
 if [ -f "$FILE" ]; then
-	echo "create the hadoop input directory..."
-	hadoop fs -mkdir -p $INPUT &> /dev/null
-	
-	echo "put $FILE into the hadoop input directory..."
-	hadoop fs -put $FILE $INPUT &> /dev/null
-	
-	echo "launch the Spark WordCountTask..."
-	time spark-submit --class wct.WordCountTask \
-	                  --master yarn \
-	                  --deploy-mode cluster \
-	                  --driver-memory 4g \
-	                  --executor-memory 2g \
-	                  --executor-cores 1 \
-	                  wordcount.jar \
-	                  $INPUT/$FILE \
-	                  $OUTPUT | tee $FTIME
+    echo "create the hadoop input directory..."
+    hadoop fs -mkdir -p $INPUT &> /dev/null
 
-	echo "get the output in the current directory..."
-	hadoop fs -get $OUTPUT &> /dev/null
+    echo "put $FILE into the hadoop input directory..."
+    hadoop fs -put $FILE $INPUT &> /dev/null
+
+    echo "launch the Spark WordCountTask..."
+    time spark-submit --class wct.WordCountTask \
+                      --master yarn \
+                      --deploy-mode cluster \
+                      --driver-memory 4g \
+                      --executor-memory 2g \
+                      --executor-cores 1 \
+                      wordcount.jar \
+                      $INPUT/$FILE \
+                      $OUTPUT | tee $FTIME
+
+    echo "get the output in the current directory..."
+    hadoop fs -get $OUTPUT &> /dev/null
 else
-	echo "No such file: $FILE not found."
+    echo "No such file: $FILE not found."
 fi

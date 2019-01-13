@@ -18,19 +18,24 @@ if [ -f "$FILE" ]; then
     echo "create the hadoop input directory..."
     hadoop fs -mkdir -p $INPUT &> /dev/null
 
+    echo "delete the hadoop output directory..."
+    hadoop fs -rm -r -f $OUTPUT &> /dev/null
+
     echo "put $FILE into the hadoop input directory..."
     hadoop fs -put $FILE $INPUT &> /dev/null
 
     echo "launch the Spark WordCountTask..."
-    time spark-submit --class wct.WordCountTask \
-                      --master yarn \
-                      --deploy-mode cluster \
-                      --driver-memory 4g \
-                      --executor-memory 2g \
-                      --executor-cores 1 \
-                      wordcount.jar \
-                      $INPUT/$FILE \
-                      $OUTPUT | tee $FTIME
+    ( time spark-submit --class wct.WordCountTask \
+                        --master yarn \
+                        --deploy-mode cluster \
+                        --driver-memory 4g \
+                        --executor-memory 2g \
+                        --executor-cores 1 \
+                        wordcount.jar \
+                        $INPUT/$FILE \
+                        $OUTPUT ) |& tee /tmp/$FILE.log
+    cat /tmp/$FILE.log | tail -n 3 > $FTIME
+    rm -f /tmp/$FILE.log
 
     echo "get the output in the current directory..."
     hadoop fs -get $OUTPUT &> /dev/null

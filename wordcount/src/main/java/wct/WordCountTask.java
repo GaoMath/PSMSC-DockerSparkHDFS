@@ -21,7 +21,7 @@ import static jersey.repackaged.com.google.common.base.Preconditions.checkArgume
 public class WordCountTask {
 
   /**
-   * The Logger contant.
+   * The Logger constant.
    */
   private static final Logger LOGGER = LoggerFactory.getLogger(WordCountTask.class);
 

@@ -71,5 +71,8 @@ while [ $i -lt $N ]; do
     i=$(( $i + 1 ))
 done
 
+# run hadoop file system on the hadoop master container
+sudo docker exec $HADOOP_MASTER /usr/local/bin/start-hadoop.sh
+
 # get into hadoop master container
 sudo docker exec -it $HADOOP_MASTER bash

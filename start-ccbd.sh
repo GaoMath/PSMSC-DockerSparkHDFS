@@ -46,7 +46,7 @@ sudo docker rm -f $HADOOP_MASTER &> /dev/null
 
 echo "run the hadoop master container..."
 sudo docker run -itd \
-                --net=hadoop \
+                --net=$DOCKER_BRG \
                 -p 50070:50070 \
                 -p 8088:8088 \
                 -p 7077:7077 \
@@ -64,7 +64,7 @@ while [ $i -lt $N ]; do
     port=$(( 8040 + $i ))
     sudo docker run -itd \
                     -p $port:8042 \
-                    --net=hadoop \
+                    --net=DOCKER_BRG \
                     --name $HADOOP_SLAVE$i \
                     --hostname $HADOOP_SLAVE$i \
                     $DOCKER_IMG:$DOCKER_TAG &> /dev/null

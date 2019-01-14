@@ -64,7 +64,7 @@ while [ $i -lt $N ]; do
     port=$(( 8040 + $i ))
     sudo docker run -itd \
                     -p $port:8042 \
-                    --net=DOCKER_BRG \
+                    --net=$DOCKER_BRG \
                     --name $HADOOP_SLAVE$i \
                     --hostname $HADOOP_SLAVE$i \
                     $DOCKER_IMG:$DOCKER_TAG &> /dev/null

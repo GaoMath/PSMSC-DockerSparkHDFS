@@ -43,7 +43,7 @@ cd examples
 
 
 ## Authors
-* **Guillaume Hugonnard** - *MSc-PSMSC, INPT-ENSEEIHT Eng. School and Paul Sabatier Faculty of Science and Engineering* - GuillaumeHugonnard
+* **Guillaume Hugonnard** - *MSc-PSMSC, INPT-ENSEEIHT Eng. School and Paul Sabatier Faculty of Science and Engineering* - [GuillaumeHugonnard](https://github.com/GuillaumeHugonnard)
 * **Tom Ragonneau** - *MSc-PSMSC, INPT-ENSEEIHT Eng. School and Paul Sabatier Faculty of Science and Engineering* - [TomRagonneau](https://github.com/TomRagonneau)
 
 See also the list of [contributors](https://github.com/your/project/contributors) who participated in this project.

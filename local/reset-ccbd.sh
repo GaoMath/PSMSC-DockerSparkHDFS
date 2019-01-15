@@ -22,10 +22,11 @@ usage() {
 
 init() {
     echo "stop all containers..."
-    sudo docker stop $(docker ps -a -q) &> /dev/null
+    docker stop $(docker ps -a -q) &> /dev/null
+    docker rm $(docker ps -a -q) &> /dev/null
 
     echo "remove all docker network..."
-    sudo docker network rm $(docker network ls -q) &> /dev/null
+    docker network rm $(docker network ls -q) &> /dev/null
 }
 
 if [[ ! $@ =~ ^\-.+ ]]; then
@@ -37,7 +38,7 @@ else
               ;;
             i ) init
                 echo "remove docker image..."
-                sudo docker rmi -f $DOCKER_IMG:$DOCKER_TAG 2> /dev/null
+                docker rmi -f $DOCKER_IMG:$DOCKER_TAG
               ;;
             \? ) echo -e "Invalid option: $OPTARG\n" 1>&2
                  usage

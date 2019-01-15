@@ -27,6 +27,8 @@ init() {
 
     echo "remove all docker network..."
     docker network rm $(docker network ls -q) &> /dev/null
+
+    rm -f config/slaves
 }
 
 if [[ ! $@ =~ ^\-.+ ]]; then
@@ -37,6 +39,7 @@ else
             h ) usage
               ;;
             i ) init
+
                 echo "remove docker image..."
                 docker rmi -f $DOCKER_IMG:$DOCKER_TAG
               ;;

@@ -25,7 +25,7 @@ usage() {
 
 # write the hadoop slave file
 i=1
-rm -f config/slaves
+rm -f config/slaves 2> /dev/null
 while [ $i -lt $N ]; do
     echo "$HADOOP_SLAVE$i" >> config/slaves
     i=$(( $i + 1 ))

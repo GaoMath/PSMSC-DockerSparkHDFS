@@ -15,13 +15,13 @@ DOCKER_BRG="hadoop"
 HADOOP_MASTER="hadoop-master"
 HADOOP_SLAVE="hadoop-slave"
 NBEGIN=${1:-3}
-N=${1:-2}
+N=${2:-2}
 
 usage() {
     echo "Usage: sudo ./start-ccbd.sh [ARGUMENT]"
     echo -e "\nLaunch the CCBD containers."
     echo -e "\nArgument:"
-    echo -e "\tN\tThe number of containers to launch (default: 3)"
+    echo -e "\tN\tThe number of containers to launch (default: 2)"
 }
 
 # set the environment variables

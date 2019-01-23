@@ -44,6 +44,7 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/slaves $HADOOP_HOME/etc/hadoop/slaves && \
     mv /tmp/start-hadoop.sh /usr/local/bin/start-hadoop.sh && \
     mv /tmp/start-wordcount.sh ~/examples/start-wordcount.sh && \
+    mv /tmp/start-scalibility-ccbd.sh ~/examples/start-scalibility-ccbd.sh && \
     mv /tmp/file-wordcount.txt ~/examples/file-wordcount.txt && \
     mv /tmp/wordcount.jar ~/examples/wordcount.jar && \
     mv /tmp/master_broadcast.sh /usr/local/bin/master_broadcast.sh && \

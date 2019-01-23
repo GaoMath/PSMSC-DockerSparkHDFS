@@ -17,6 +17,7 @@ FTIME="/tmp/time-wordcount.log"
 if [ -f "$FILE" ]; then
     echo "create the hadoop input directory..."
     hadoop fs -mkdir -p $INPUT &> /dev/null
+    hadoop fs -rm -f $INPUT/$FILE &> /dev/null
 
     echo "delete the hadoop output directory..."
     hadoop fs -rm -r -f $OUTPUT &> /dev/null

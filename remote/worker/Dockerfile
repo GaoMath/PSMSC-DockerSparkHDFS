@@ -47,6 +47,7 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/start-wordcount.sh ~/examples/start-wordcount.sh && \
     mv /tmp/file-wordcount.txt ~/examples/file-wordcount.txt && \
     mv /tmp/wordcount.jar ~/examples/wordcount.jar && \
+    mv /tmp/wordcountCPU.jar ~/examples/wordcountCPU.jar && \
     mv /tmp/spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf
 
 RUN chmod +x /usr/local/bin/start-hadoop.sh && \

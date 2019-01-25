@@ -14,6 +14,7 @@ You first need to install [Docker](https://www.docker.com/). On Ubuntu:
 
 ```
 wget -qO- https://get.docker.com/ | sh
+sudo apt-get install ufw
 sudo usermod -aG docker $USER
 ```
 
@@ -23,6 +24,8 @@ sudo usermod -aG docker $USER
 With Docker installed, execute the following script:
 
 ```
+cd local/
+./reset-ccbd.sh -i
 ./start-ccbd.sh <n>
 ```
 
@@ -33,7 +36,7 @@ It will build all the docker images, run all the containers and get you into had
 Now all you need to do in order to run the Word Count example is to execute the following lines: 
 
 ```
-cd examples
+cd examples/
 ./start-wordcount.sh
 ```
 The time it took, for your configuration, to count the words in file-wordcount.txt is displayed at the end of the execution.
@@ -46,22 +49,26 @@ With Docker installed on every guest host which will be used, set each IP addres
 Every worker host communicates its RSA key to the manager who saves them in his authorized_keys.
 
 Modify the set-configuration.sh on the manager as follows :
-  * Put the manager's IP address
+* Put the manager's IP address
   
 Modify the set-configuration.sh on the workers as follows :
-  * Put the manager's host name
-  * Put the IP address of the manager
-  * Put the IP address of the worker
+* Put the manager's host name
+* Put the IP address of the manager
+* Put the IP address of the worker
 
 On every guest host, execute the following script :
 
 ```
+cd remote/
 sudo ./set-ports.sh
 ```
+(This script only works on Linux distributions)
 
 On the manager guest host execute the following script :
 
 ```
+cd manager/
+./reset-ccbd.sh -i
 ./start-ccbd.sh <n> <m>
 ```
 with *n* being the total number of container on the manager host (master + slaves) and *m* being the total number of remote slaves on the cluster.
@@ -70,6 +77,8 @@ It will build all the docker images locally, run all the containers and get you 
 When the previous script is finished, each worker executes the following script : 
 
 ```
+cd worker/
+./reset-ccbd.sh -i
 ./start-ccbd.sh <i> <n>
 ```
 with *i* being the initial index (number of slaves already launched + 1) and *n* being the number of slaves on this host.
@@ -78,7 +87,7 @@ You now do not have to do anything on the worker guest hosts. Just make sure to 
 On the manager host, execute the following script:
 ```
 start-hadoop.sh
-cd example/
+cd examples/
 ./start-wordcount.sh
 ```
 

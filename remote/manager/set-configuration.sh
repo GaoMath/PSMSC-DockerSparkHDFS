@@ -4,7 +4,7 @@
 #author          :Guillaume Hugonnard and Tom Ragonneau
 #date            :20190113
 #version         :1.0
-#usage           :source ./set-configuration.sh [OPTION]
+#usage           :source ./set-configuration.sh
 #notes           :The IP addresses have to be static.
 #bash_version    :4.4.19(1)-release
 #==============================================================================

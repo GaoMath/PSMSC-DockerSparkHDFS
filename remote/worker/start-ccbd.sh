@@ -21,16 +21,19 @@ usage() {
     echo "Usage: sudo ./start-ccbd.sh [ARGUMENT]"
     echo -e "\nLaunch the CCBD containers."
     echo -e "\nArgument:"
+    echo -e "\tNB\tThe initial index of the first container (default: 3)"
     echo -e "\tN\tThe number of containers to launch (default: 2)"
 }
 
 # set the environment variables
 source ./set-configuration.sh
 
+# get the remote files
 rm -f config/id_rsa.hadoop-master.pub
 scp $HADOOPSPARK_MANAGER_USER@$HADOOPSPARK_MANAGER_IP:/tmp/id_rsa.hadoop-master.pub config/id_rsa.hadoop-master.pub
 scp $HADOOPSPARK_MANAGER_USER@$HADOOPSPARK_MANAGER_IP:/tmp/swarm.hadoop-master.tkn config/swarm.hadoop-master.tkn
 
+# start the swarm network
 HADOOPMASTER_TKN=$(cat config/swarm.hadoop-master.tkn)
 docker swarm join --token $HADOOPMASTER_TKN --advertise-addr $HADOOPSPARK_WORKER_IP $HADOOPSPARK_MANAGER_IP:2377
 

@@ -23,6 +23,7 @@ usage() {
     echo -e "\nLaunch the CCBD containers."
     echo -e "\nArgument:"
     echo -e "\tN\tThe number of containers to launch (default: 3)"
+    echo -e "\tNR\tThe number of remote slaves (default: 2)"
 }
 
 # set the environment variables
@@ -85,7 +86,6 @@ done
 # run hadoop file system on the hadoop master container
 docker exec $HADOOP_MASTER master_broadcast.sh > /tmp/id_rsa.hadoop-master.pub
 cat /tmp/id_rsa.hadoop-master.pub >> /home/tom/.ssh/authorized_keys
-# sudo docker exec $HADOOP_MASTER /usr/local/bin/start-hadoop.sh
 
 # get into hadoop master container
 docker exec -it $HADOOP_MASTER bash

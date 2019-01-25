@@ -44,14 +44,9 @@ RUN mv /tmp/ssh_config ~/.ssh/config && \
     mv /tmp/mapred-site.xml $HADOOP_HOME/etc/hadoop/mapred-site.xml && \
     mv /tmp/yarn-site.xml $HADOOP_HOME/etc/hadoop/yarn-site.xml && \
     mv /tmp/start-hadoop.sh /usr/local/bin/start-hadoop.sh && \
-    mv /tmp/start-wordcount.sh ~/examples/start-wordcount.sh && \
-    mv /tmp/file-wordcount.txt ~/examples/file-wordcount.txt && \
-    mv /tmp/wordcount.jar ~/examples/wordcount.jar && \
-    mv /tmp/wordcountCPU.jar ~/examples/wordcountCPU.jar && \
     mv /tmp/spark-defaults.conf $SPARK_HOME/conf/spark-defaults.conf
 
 RUN chmod +x /usr/local/bin/start-hadoop.sh && \
-    chmod +x ~/examples/start-wordcount.sh && \
     chmod +x $HADOOP_HOME/sbin/start-dfs.sh && \
     chmod +x $HADOOP_HOME/sbin/start-yarn.sh
 

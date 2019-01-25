@@ -26,7 +26,7 @@ With Docker installed, execute the following script:
 ./start-ccbd.sh <n>
 ```
 
-with *n* being the total number of container which will be built (1 master + (*n-1*) slaves)
+with *n* being the total number of container which will be built (1 master + (*n*-1) slaves)
 
 It will build all the docker images, run all the containers and get you into hadoop master container under root user and execute hadoop.
 
@@ -64,15 +64,15 @@ On the manager guest host execute the following script :
 ```
 ./start-ccbd.sh <n> <m>
 ```
-with *n* being ... and *m* being ...
-It will build all the docker images, run all the containers and get you into hadoop master container under root user.
+with *n* being the total number of container on the manager host (master + slaves) and *m* being the total number of remote slaves on the cluster.
+It will build all the docker images locally, run all the containers and get you into hadoop master container under root user.
 
 When the previous script is finished, each worker executes the following script : 
 
 ```
 ./start-ccbd.sh <i> <n>
 ```
-with *i* being ... and *n* being ...
+with *i* being the initial index (number of slaves already launched + 1) and *n* being the number of slaves on this host.
 You now do not have to do anything on the worker guest hosts. Just make sure to keep them powered on.
 
 On the manager host, execute the following script:

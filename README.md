@@ -46,12 +46,12 @@ With Docker installed on every guest host which will be used, set each IP addres
 Every worker host communicates its RSA key to the manager who saves them in his authorized_keys.
 
 Modify the set-configuration.sh on the manager as follows :
-  Put the manager's IP address
+  * Put the manager's IP address
   
 Modify the set-configuration.sh on the workers as follows :
-  Put the manager's host name
-  Put the IP address of the manager
-  Put the IP address of the worker
+  * Put the manager's host name
+  * Put the IP address of the manager
+  * Put the IP address of the worker
 
 On every guest host, execute the following script :
 
@@ -73,7 +73,6 @@ When the previous script is finished, each worker executes the following script 
 ./start-ccbd.sh <i> <n>
 ```
 with *i* being ... and *n* being ...
-
 You now do not have to do anything on the worker guest hosts. Just make sure to keep them powered on.
 
 On the manager host, execute the following script:
@@ -84,27 +83,6 @@ cd example/
 ```
 
 The time it took spark to count the words in file-wordcount.txt is displayed and saved */tmp/time-wordcount.log*.
-
-
-
-With Docker installed, execute the following script on the manager guest host: 
-
-```
-sudo ./set-ports.sh
-./start-ccbd.sh <n> <m>
-```
-with *n* being ... and *m* being ...
-
-When this script is done, execute the following script on all the worker guest hosts: 
-
-```
-sudo set-ports.sh
-./start-ccbd.sh <i> <n>
-```
-with *i* being ... and *n* being ...
-
-
-
 
 ## Built With
 * [Docker](https://www.docker.com/) - A computer program that performs operating-system-level virtualization

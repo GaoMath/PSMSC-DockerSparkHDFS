@@ -18,7 +18,7 @@ sudo apt-get install ufw
 sudo usermod -aG docker $USER
 ```
 
-### Installing
+### Running
 
 #### Locally
 With Docker installed, execute the following script:

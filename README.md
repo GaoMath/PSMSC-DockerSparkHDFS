@@ -71,7 +71,7 @@ cd manager/
 ./reset-ccbd.sh -i
 ./start-ccbd.sh <n> <m>
 ```
-with *n* being the total number of container on the manager host (master + slaves) and *m* being the total number of remote slaves on the cluster.
+with *n* being the total number of container on the manager host (master + slaves, default: 3) and *m* being the total number of remote slaves on the cluster (default: 2).
 It will build all the docker images locally, run all the containers and get you into hadoop master container under root user.
 
 When the previous script is finished, each worker executes the following script : 
@@ -81,7 +81,7 @@ cd worker/
 ./reset-ccbd.sh -i
 ./start-ccbd.sh <i> <n>
 ```
-with *i* being the initial index (number of slaves already launched + 1) and *n* being the number of slaves on this host.
+with *i* being the initial index (number of slaves already launched + 1, default: 3) and *n* being the number of slaves on this host (default: 2). If you launch only one worker, all the default numbers are relevant.
 You now do not have to do anything on the worker guest hosts. Just make sure to keep them powered on.
 
 On the manager host, execute the following script:
